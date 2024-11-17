@@ -1,6 +1,6 @@
 # renovatebot: datasource=docker depName=actions/actions-runner
 ARG VERSION=2.320.0
-FROM --platform=amd64 ghcr.io/actions/actions-runner:${VERSION}
+FROM --platform=${BUILDPLATFORM} ghcr.io/actions/actions-runner:${VERSION}
 
 ENV HOMEBREW_NO_ANALYTICS=1 \
     HOMEBREW_NO_ENV_HINTS=1 \
