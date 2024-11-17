@@ -6,7 +6,8 @@
     ":dependencyDashboard",
     ":disableRateLimiting",
     ":timezone(America/Chicago)",
-    ":semanticCommits"
+    ":semanticCommits",
+    "github>ewatkins/containers//.github/renovate/customManagers.json5",
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],

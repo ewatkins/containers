@@ -2,8 +2,8 @@ FROM docker.io/library/alpine:3.20
 
 ARG TARGETPLATFORM
 
-# renovate: datasource=docker depName=postgres/postgres
-ARG VERSION=16.4
+# renovatebot: datasource=repology depName=alpine_3_20/postgresql16-client versioning=loose
+ARG VERSION="16.4-r1"
 ARG CHANNEL
 
 USER root

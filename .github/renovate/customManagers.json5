@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update VERSION variables in Dockerfiles",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        '#\\s(?:renovate|renovatebot):\\sdatasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG)\\s.+?_VERSION="(?<currentValue>.+?)"',
+        '#\\s(?:renovate|renovatebot):\\sdatasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG)\\sVERSION="(?<currentValue>.+?)"',
+      ],
+      "versioningTemplate": '{{#if versioning}}{{versioning}}{{else}}semver{{/if}}',
+    },
+    {
+      "customType": "regex",
+      "description": 'Update Alpine Version in Dockerfiles',
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "# (?:renovate|renovatebot): datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
+      ],
+      "currentValueTemplate": "{{{ replace '_' '.' currentValue }}}",
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "docker.io/library/alpine",
+      "versioningTemplate": "regex:^(?<major>\\d+)[._](?<minor>\\d+)$",
+      "autoReplaceStringTemplate": "# renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}"
+    }
+  ]
+}
