@@ -1,7 +1,9 @@
 FROM docker.io/library/alpine:3.20
 
 ARG TARGETPLATFORM
-ARG VERSION
+
+# renovate: datasource=docker depName=postgres/postgres
+ARG VERSION=16.4
 ARG CHANNEL
 
 USER root
