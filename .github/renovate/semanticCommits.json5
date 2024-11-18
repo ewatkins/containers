@@ -38,7 +38,7 @@
     {
       "matchDatasources": ["repology"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(deps)!: ",
+      "commitMessagePrefix": "feat(package)!: ",
       "commitMessageTopic": "{{depName}}",
       "commitMessageExtra": " ( {{currentVersion}} → {{newVersion}} )"
     },
@@ -46,7 +46,7 @@
       "matchDatasources": ["repology"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "deps",
+      "semanticCommitScope": "package",
       "commitMessageTopic": "{{depName}}",
       "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
     },
@@ -54,7 +54,7 @@
       "matchDatasources": ["repology"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "deps",
+      "semanticCommitScope": "package",
       "commitMessageTopic": "{{depName}}",
       "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
     },
@@ -62,7 +62,7 @@
       "matchDatasources": ["repology"],
       "matchUpdateTypes": ["digest"],
       "semanticCommitType": "chore",
-      "semanticCommitScope": "deps",
+      "semanticCommitScope": "package",
       "commitMessageTopic": "{{depName}}",
       "commitMessageExtra": "( {{currentDigestShort}} → {{newDigestShort}} )"
     }
