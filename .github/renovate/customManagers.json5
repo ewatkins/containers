@@ -3,26 +3,26 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update VERSION variables in Dockerfiles",
-      "fileMatch": ["^Dockerfile$"],
+      "description": ["Update VERSION variables in Dockerfiles with Repology"],
+      "fileMatch": ['(^|/)Dockerfile$'],
       "matchStrings": [
-        '#\\s(?:renovate|renovatebot):\\sdatasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG)\\s.+?_VERSION="(?<currentValue>.+?)"',
-        '#\\s(?:renovate|renovatebot):\\sdatasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG)\\sVERSION="(?<currentValue>.+?)"',
+        'renovate: datasource=repology depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s(ARG|ENV) VERSION=(?<currentValue>.*)'
       ],
-      "versioningTemplate": '{{#if versioning}}{{versioning}}{{else}}semver{{/if}}',
+      "versioningTemplate": '{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}',
+      "datasourceTemplate": "repology"
     },
     {
       "customType": "regex",
       "description": 'Update Alpine Version in Dockerfiles',
-      "fileMatch": ["^Dockerfile$"],
+      "fileMatch": ['(^|/)Dockerfile$'],
       "matchStrings": [
-        "# (?:renovate|renovatebot): datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
+        'renovate: datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)'
       ],
       "currentValueTemplate": "{{{ replace '_' '.' currentValue }}}",
       "datasourceTemplate": "docker",
       "depNameTemplate": "docker.io/library/alpine",
       "versioningTemplate": "regex:^(?<major>\\d+)[._](?<minor>\\d+)$",
-      "autoReplaceStringTemplate": "# renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}"
+      "autoReplaceStringTemplate": "renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}"
     }
   ]
 }

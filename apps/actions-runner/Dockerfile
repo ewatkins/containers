@@ -1,4 +1,4 @@
-# renovatebot: datasource=docker depName=actions/actions-runner
+# renovate: datasource=docker depName=actions/actions-runner
 ARG VERSION=2.321.0
 FROM --platform=${BUILDPLATFORM} ghcr.io/actions/actions-runner:${VERSION}
 
