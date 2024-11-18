@@ -3,7 +3,7 @@ FROM docker.io/library/alpine:3.20
 ARG TARGETPLATFORM
 
 # renovate: datasource=repology depName=alpine_3_20/postgresql16-client versioning=loose
-ARG VERSION=16.5-r0
+ARG VERSION=16.4
 ARG CHANNEL
 
 USER root
