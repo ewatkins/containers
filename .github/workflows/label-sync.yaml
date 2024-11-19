@@ -4,15 +4,20 @@ name: "Label Sync"
 
 on:
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      BOT_APP_ID:
+        description: The App ID of the GitHub App
+        required: true
+      BOT_APP_PRIVATE_KEY:
+        description: The private key of the GitHub App
+        required: true
   push:
     branches: ["main"]
     paths:
       - .github/labels.yaml
       - .github/workflows/label-sync.yaml
       - apps/**
-  pull_request:
-    branches: ["main"]
-    types: ["opened", "synchronize", "reopened"]
   schedule:
     - cron: "0 0 * * *" # Every day at midnight
 
