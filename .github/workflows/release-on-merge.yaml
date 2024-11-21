@@ -11,7 +11,9 @@ on:
     branches: ["main"]
     paths:
       - "apps/**"
-      # - "!apps/**/metadata.yaml"
+      - "scripts/templates/**"
+      - "!apps/**/metadata.yaml"
+      - "!apps/**/README.md"
 
 jobs:
   simple-checks:
