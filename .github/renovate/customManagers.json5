@@ -6,7 +6,7 @@
       "description": ["Update VERSION variables in Dockerfiles with Repology"],
       "fileMatch": ['(^|/)Dockerfile$'],
       "matchStrings": [
-        'renovate: datasource=repology depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s(ARG|ENV) VERSION=(?<currentValue>.*)'
+        'renovate: datasource=repology depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s(ARG|ENV) VERSION="(?<currentValue>.*)"'
       ],
       "versioningTemplate": '{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}',
       "datasourceTemplate": "repology"
