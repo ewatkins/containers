@@ -176,7 +176,7 @@ jobs:
               image_name="ghcr.io/${{ github.env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}"
               outputs="type=image,name=${image_name},push-by-digest=true,name-canonical=true,push=true"
           else
-              image_name="ghcr.io/${{ github.env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:zztesting"
+              image_name="ghcr.io/${{ github.env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:${{ matrix.image.version }}"
               outputs="type=docker,name=${image_name},push=false"
           fi
           echo "image_name=${image_name}" >> $GITHUB_OUTPUT
