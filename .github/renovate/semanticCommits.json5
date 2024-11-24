@@ -1,70 +1,53 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
-    // Docker Hub
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(container)!: ",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": " ( {{currentVersion}} → {{newVersion}} )"
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat",
-      "semanticCommitScope": "container",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "container",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["digest"],
-      "semanticCommitType": "chore",
-      "semanticCommitScope": "container",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentDigestShort}} → {{newDigestShort}} )"
-    },
-
     // Repology
     {
       "matchDatasources": ["repology"],
+      "addLabels": ["renovate/container", "type/major"],
+      "additionalBranchPrefix": "{{parentDir}}-",
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(package)!: ",
+      "commitMessagePrefix": "feat({{parentDir}})!: ",
       "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": " ( {{currentVersion}} → {{newVersion}} )"
+      "commitMessageExtra": " ( {{currentVersion}} → {{newVersion}} )",
+      "labels": ["app/{{parentDir}}"],
+      "matchFileNames": ["apps/**/Dockerfile"]
     },
     {
       "matchDatasources": ["repology"],
+      "addLabels": ["renovate/container", "type/minor"],
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )",
+      "commitMessageTopic": "{{depName}}",
+      "labels": ["app/{{parentDir}}"],
+      "matchFileNames": ["apps/**/Dockerfile"],
       "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat",
-      "semanticCommitScope": "package",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
+      "semanticCommitScope": "{{parentDir}}",
+      "semanticCommitType": "feat"
     },
     {
       "matchDatasources": ["repology"],
+      "addLabels": ["renovate/container", "type/patch"],
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )",
+      "commitMessageTopic": "{{depName}}",
+      "labels": ["app/{{parentDir}}"],
+      "matchFileNames": ["apps/**/Dockerfile"],
       "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "package",
-      "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
+      "semanticCommitScope": "{{parentDir}}",
+      "semanticCommitType": "fix"
     },
     {
       "matchDatasources": ["repology"],
-      "matchUpdateTypes": ["digest"],
-      "semanticCommitType": "chore",
-      "semanticCommitScope": "package",
+      "addLabels": ["renovate/container", "type/digest"],
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": "( {{currentDigestShort}} → {{newDigestShort}} )",
       "commitMessageTopic": "{{depName}}",
-      "commitMessageExtra": "( {{currentDigestShort}} → {{newDigestShort}} )"
+      "labels": ["app/{{parentDir}}"],
+      "matchFileNames": ["apps/**/Dockerfile"],
+      "matchUpdateTypes": ["digest"],
+      "semanticCommitScope": "{{parentDir}}",
+      "semanticCommitType": "chore"
     }
   ]
 }

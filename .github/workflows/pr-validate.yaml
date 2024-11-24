@@ -27,8 +27,3 @@ jobs:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
       pushImages: false
       sendNotifications: false
-
-  sync-labels:
-    needs: ["simple-checks", "get-changed-images", "build-images"]
-    uses: ewatkins/containers/.github/workflows/label-sync.yaml@main
-    secrets: inherit
