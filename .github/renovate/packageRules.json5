@@ -1,6 +1,47 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
+    {
+      "description": ["Auto-merge GitHub Actions for minor and patch"],
+      "matchManagers": ["github-actions"],
+      "matchDatasources": ["github-tags"],
+      "automerge": true,
+      "automergeType": "branch",
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    // Docker
+    {
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": " ( {{currentVersion}} → {{newVersion}} )",
+      "commitMessagePrefix": "feat({{parentDir}})!: ",
+      "commitMessageTopic": "{{depName}}",
+      "labels": ["app/{{parentDir}}", "major"],
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["apps/**/Dockerfile"],
+      "matchUpdateTypes": ["major"]
+    },
+    {
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )",
+      "commitMessageTopic": "{{depName}}",
+      "labels": ["app/{{parentDir}}", "minor"],
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["apps/**/Dockerfile"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitScope": "{{parentDir}}",
+      "semanticCommitType": "feat"
+    },
+    {
+      "additionalBranchPrefix": "{{parentDir}}-",
+      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )",
+      "commitMessageTopic": "{{depName}}",
+      "labels": ["app/{{parentDir}}", "patch"],
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["apps/**/Dockerfile"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitScope": "{{parentDir}}",
+      "semanticCommitType": "fix"
+    },
     // Repology
     {
       "matchDatasources": ["repology"],
