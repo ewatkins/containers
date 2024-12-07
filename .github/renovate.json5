@@ -12,5 +12,6 @@
     "github>ewatkins/containers//.github/renovate/packageRules.json5"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"]
+  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "assigneesFromCodeOwners": true
 }
