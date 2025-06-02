@@ -1,5 +1,5 @@
 # renovate: datasource=docker depName=actions/actions-runner
-ARG VERSION=2.323.0
+ARG VERSION=2.325.0
 FROM --platform=${BUILDPLATFORM} ghcr.io/actions/actions-runner:${VERSION}
 
 ENV HOMEBREW_NO_ANALYTICS=1 \
